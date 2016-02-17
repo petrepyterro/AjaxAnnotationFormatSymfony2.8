@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="task")
  * @ORM\Entity(repositoryClass="TaskBundle\Repository\TaskRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Task
 {
@@ -31,7 +32,7 @@ class Task
     /**
      * @var bool
      *
-     * @ORM\Column(name="complete", type="boolean")
+     * @ORM\Column(name="complete", type="boolean", nullable=true)
      */
     private $complete;
 
@@ -104,10 +105,11 @@ class Task
      *
      * @param \DateTime $created
      * @return Task
+     * @ORM\PrePersist
      */
-    public function setCreated($created)
+    public function setCreated()
     {
-        $this->created = $created;
+        $this->created = new \Datetitme();
 
         return $this;
     }
