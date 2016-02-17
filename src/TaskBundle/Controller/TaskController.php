@@ -12,7 +12,7 @@ use TaskBundle\Form\TaskType;
 /**
  * Task controller.
  *
- * @Route("/task")
+ * @Route("/")
  */
 class TaskController extends Controller
 {
