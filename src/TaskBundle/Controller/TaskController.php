@@ -3,6 +3,7 @@
 namespace TaskBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -107,13 +108,27 @@ class TaskController extends Controller
      */
     public function editCompleteAction(Request $request, Task $task)
     {
-        $editCompleteForm = $this->createForm('TaskBundle\Form\TaskCompleteType', $task);
+        $editCompleteForm = $this->createForm('TaskBundle\Form\TaskCompleteType', $task, array(
+          'action' => $this->generateUrl('task_edit_complete', array(
+              'id' => $task->getId()
+          ))
+        ));
         $editCompleteForm->handleRequest($request);
 
         if ($editCompleteForm->isSubmitted() && $editCompleteForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
+            
+            if ($request->isXmlHttpRequest()){
+              $json = json_encode(array(
+                'id' => $task->getId(),
+                'complete' => $task->getComplete()
+              ));
+              $response = new Response($json);
+              $response->headers->set('Content Type', 'application/json');
+              return $response;
+            }
 
             return $this->redirectToRoute('task_index');
         }

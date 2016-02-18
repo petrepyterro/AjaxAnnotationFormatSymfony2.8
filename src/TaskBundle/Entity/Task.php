@@ -109,7 +109,7 @@ class Task
      */
     public function setCreated()
     {
-        $this->created = new \Datetitme();
+        $this->created = new \DateTime();
 
         return $this;
     }
