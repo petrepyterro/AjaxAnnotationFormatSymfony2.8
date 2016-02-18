@@ -18,7 +18,7 @@
             <tr>
                 <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td>
                 <td>{{ task.task }}</td>
-                <td>{% if task.complete %}Yes{% else %}No{% endif %}</td>
+                <td><a href="{{ path('task_edit_complete', { 'id': task.id }) }}">{% if task.complete %} X {% else %} 0 {% endif %}</a></td>
                 <td>{% if task.created %}{{ task.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>

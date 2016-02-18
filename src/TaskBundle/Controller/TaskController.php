@@ -70,8 +70,7 @@ class TaskController extends Controller
         $deleteForm = $this->createDeleteForm($task);
 
         return $this->render('task/show.html.twig', array(
-            'task' => $task,
-            'delete_form' => $deleteForm->createView(),
+            'task' => $task
         ));
     }
 
@@ -83,7 +82,6 @@ class TaskController extends Controller
      */
     public function editAction(Request $request, Task $task)
     {
-        $deleteForm = $this->createDeleteForm($task);
         $editForm = $this->createForm('TaskBundle\Form\TaskType', $task);
         $editForm->handleRequest($request);
 
@@ -98,7 +96,31 @@ class TaskController extends Controller
         return $this->render('task/edit.html.twig', array(
             'task' => $task,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+    /**
+     * Displays a form to edit an existing Task entity.
+     *
+     * @Route("/{id}/edit-complete", name="task_edit_complete")
+     * @Method({"GET", "POST"})
+     */
+    public function editCompleteAction(Request $request, Task $task)
+    {
+        $editCompleteForm = $this->createForm('TaskBundle\Form\TaskCompleteType', $task);
+        $editCompleteForm->handleRequest($request);
+
+        if ($editCompleteForm->isSubmitted() && $editCompleteForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
+
+            return $this->redirectToRoute('task_index');
+        }
+
+        return $this->render('task/complete.html.twig', array(
+            'task' => $task,
+            'edit_complete_form' => $editCompleteForm->createView(),
         ));
     }
 

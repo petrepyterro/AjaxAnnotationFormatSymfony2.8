@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% form_theme edit_complete_form 'TaskBundle:Form:fields.html.twig' %}
+
+{% block body %}
+    <h1>Task edit</h1>
+
+    {{ form_start(edit_complete_form) }}
+        {# form_widget(edit_complete_form) #}
+        {{ form_errors(edit_complete_form) }}
+        {{ form_widget(edit_complete_form.complete) }}
+        {{ form_rest(edit_complete_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_complete_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('task_index') }}">Back to the list</a>
+        </li>
+        
+    </ul>
+{% endblock %}
