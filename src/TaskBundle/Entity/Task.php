@@ -3,6 +3,8 @@
 namespace TaskBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * Task
@@ -25,6 +27,7 @@ class Task
   /**
    * @var string
    *
+   * @Assert\NotBlank(message="Task field is required.")
    * @ORM\Column(name="task", type="string", length=255)
    */
   private $task;
