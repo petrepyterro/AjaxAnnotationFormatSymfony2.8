@@ -2,28 +2,21 @@
 
 {% block body %}
   <h1>Task list</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Task</th>
-        <th>Complete</th>
-        <th>Created</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
+  <ul>
+    <li>
+      <a href="{{path('task_new')}}">Create a new task</a>
+    </li>
+  </ul>
+  <table class="records_list">
     <tbody>
     {% for task in tasks %}
       <tr>
-        <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td>
-        <td>{{ task.task }}</td>
         <td id="task-complete-{{task.id}}">
           <a class="ajax-task-complete" data-complete="{% if task.complete %}true{% else %}false{% endif %}" href="{{path('task_edit_complete', {'id': task.id})}}">
             {% if task.complete %} X {% else %} O {% endif %}
           </a>
         </td>
-        <td>{% if task.created %}{{ task.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+        <td>{{ task.task }}</td>       
         <td>
           <ul>
             <li>
@@ -38,10 +31,4 @@
     {% endfor %}
     </tbody>
   </table>
-
-  <ul>
-    <li>
-      <a href="{{ path('task_new') }}">Create a new entry</a>
-    </li>
-  </ul>
 {% endblock %}
