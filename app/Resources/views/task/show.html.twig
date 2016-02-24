@@ -1,35 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Task</h1>
+  <h1>Task</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ task.id }}</td>
-            </tr>
-            <tr>
-                <th>Task</th>
-                <td>{{ task.task }}</td>
-            </tr>
-            <tr>
-                <th>Complete</th>
-                <td>{% if task.complete %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{% if task.created %}{{ task.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+  <table>
+    <tbody>
+      <tr>
+        <th>Id</th>
+        <td>{{ task.id }}</td>
+      </tr>
+      <tr>
+        <th>Task</th>
+        <td>{{ task.task }}</td>
+      </tr>
+      <tr>
+        <th>Complete</th>
+        <td>{% if task.complete %}Yes{% else %}No{% endif %}</td>
+      </tr>
+      <tr>
+        <th>Created</th>
+        <td>{% if task.created %}{{ task.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('task_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('task_edit', { 'id': task.id }) }}">Edit</a>
-        </li>
-    </ul>
+  <ul>
+    <li>
+      <a href="{{ path('task_index') }}">Back to the list</a>
+    </li>
+    <li>
+      <a href="{{ path('task_edit', { 'id': task.id }) }}">Edit</a>
+    </li>
+  </ul>
 {% endblock %}

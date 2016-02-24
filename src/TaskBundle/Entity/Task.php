@@ -13,114 +13,114 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Task
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="task", type="string", length=255)
-     */
-    private $task;
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="task", type="string", length=255)
+   */
+  private $task;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="complete", type="boolean", nullable=true)
-     */
-    private $complete;
+  /**
+   * @var bool
+   *
+   * @ORM\Column(name="complete", type="boolean", nullable=true)
+   */
+  private $complete;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created", type="datetime")
-     */
-    private $created;
+  /**
+   * @var \DateTime
+   *
+   * @ORM\Column(name="created", type="datetime")
+   */
+  private $created;
 
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+   * Get id
+   *
+   * @return integer 
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Set task
-     *
-     * @param string $task
-     * @return Task
-     */
-    public function setTask($task)
-    {
-        $this->task = $task;
+  /**
+   * Set task
+   *
+   * @param string $task
+   * @return Task
+   */
+  public function setTask($task)
+  {
+    $this->task = $task;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get task
-     *
-     * @return string 
-     */
-    public function getTask()
-    {
-        return $this->task;
-    }
+  /**
+   * Get task
+   *
+   * @return string 
+   */
+  public function getTask()
+  {
+    return $this->task;
+  }
 
-    /**
-     * Set complete
-     *
-     * @param boolean $complete
-     * @return Task
-     */
-    public function setComplete($complete)
-    {
-        $this->complete = $complete;
+  /**
+   * Set complete
+   *
+   * @param boolean $complete
+   * @return Task
+   */
+  public function setComplete($complete)
+  {
+    $this->complete = $complete;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get complete
-     *
-     * @return boolean 
-     */
-    public function getComplete()
-    {
-        return $this->complete;
-    }
+  /**
+   * Get complete
+   *
+   * @return boolean 
+   */
+  public function getComplete()
+  {
+    return $this->complete;
+  }
 
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     * @return Task
-     * @ORM\PrePersist
-     */
-    public function setCreated()
-    {
-        $this->created = new \DateTime();
+  /**
+   * Set created
+   *
+   * @param \DateTime $created
+   * @return Task
+   * @ORM\PrePersist
+   */
+  public function setCreated()
+  {
+    $this->created = new \DateTime();
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get created
-     *
-     * @return \DateTime 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
+  /**
+   * Get created
+   *
+   * @return \DateTime 
+   */
+  public function getCreated()
+  {
+    return $this->created;
+  }
 }

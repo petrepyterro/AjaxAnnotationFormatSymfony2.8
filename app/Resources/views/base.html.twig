@@ -1,46 +1,46 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{% block title %}Welcome{% endblock %}</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}Welcome{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {% block stylesheets %}
-          {% stylesheets
-            'bundles/task/css/normalize.css'
-            'bundles/task/css/main.css'
-            filter='cssrewrite'
-          %}
-            <link rel="stylesheet" href="{{ asset_url }}">
-          {% endstylesheets %}
-        {% endblock %}
-        {% block headjavascripts %}
-          {% javascripts 
-            'bundles/task/js/vendor/modernizr-2.8.3.min.js'
-          %}
-              <script src="{{ asset_url }}"></script>
-          {% endjavascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    {% block stylesheets %}
+      {% stylesheets
+        'bundles/task/css/normalize.css'
+        'bundles/task/css/main.css'
+        filter='cssrewrite'
+      %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+      {% endstylesheets %}
+    {% endblock %}
+    {% block headjavascripts %}
+      {% javascripts 
+        'bundles/task/js/vendor/modernizr-2.8.3.min.js'
+      %}
+        <script src="{{ asset_url }}"></script>
+      {% endjavascripts %}
+    {% endblock %}
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
 
-        <script src="{{ asset('//code.jquery.com/jquery-1.12.0.min.js') }}"></script>
-        <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-1.12.0.min.js') }}"><\/script>')</script>
-        {% block javascripts %}
-          {% javascripts 
-            'bundles/task/js/plugins.js'
-            'bundles/task/js/main.js'
-          %}
-              <script src="{{ asset_url }}"></script>
-          {% endjavascripts %}
-        {% endblock %}
+    <script src="{{ asset('//code.jquery.com/jquery-1.12.0.min.js') }}"></script>
+    <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-1.12.0.min.js') }}"><\/script>')</script>
+    {% block javascripts %}
+      {% javascripts 
+        'bundles/task/js/plugins.js'
+        'bundles/task/js/main.js'
+      %}
+        <script src="{{ asset_url }}"></script>
+      {% endjavascripts %}
+    {% endblock %}
 
-    </body>
+  </body>
 </html>
